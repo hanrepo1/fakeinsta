@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
@@ -23,8 +22,8 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html/**").permitAll()
-                        .requestMatchers("/chat/**", "/error").permitAll()
-                        .requestMatchers("/api/v1/auth/**", "/api/v1/chat/start", "/api/v1/user/createUser").permitAll()
+                        .requestMatchers("/error", "/api/v1/posts/uploadPhoto", "/api/v1/posts/getAllPosts", "/api/v1/comments/getAllComments/").permitAll()
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/user/createUser", "/api/v1/user/me", "/api/v1/user/getUserById/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exceptionHandling ->

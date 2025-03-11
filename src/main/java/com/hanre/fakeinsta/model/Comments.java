@@ -1,29 +1,65 @@
 package com.hanre.fakeinsta.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "comment")
-@Data
 public class Comments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "id_post",foreignKey = @ForeignKey(name = "fk_to_post"))
-    private Posts postId;
+    private String commment;
+
+    private Long postId;
 
     @CreationTimestamp
     @Column(updatable = false)
     private Date createdAt;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getCommment() {
+        return commment;
+    }
+
+    public void setCommment(String caption) {
+        this.commment = caption;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }

@@ -38,7 +38,9 @@ public class JwtFilter extends OncePerRequestFilter {
         String token = jwtUtil.extractToken(request);
         if (token != null && jwtUtil.validateToken(token)) {
             String username = jwtUtil.decodeToken(token);
-            List<GrantedAuthority> authorities = extractAuthorities(token); // Extract roles
+            List<GrantedAuthority> authorities = extractAuthorities(token);
+
+            System.out.println(authorities);
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     username, null, authorities);
@@ -56,6 +58,10 @@ public class JwtFilter extends OncePerRequestFilter {
                 .parseClaimsJws(token)
                 .getBody();
         String role = claims.get("role", String.class); // Get role from claims
+        if (role == null || role.isEmpty()) {
+            // You can return an empty list or a default role
+            return Collections.emptyList(); // or return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+        }
         return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 }

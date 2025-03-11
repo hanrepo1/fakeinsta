@@ -1,38 +1,14 @@
-package com.hanre.fakeinsta.model;
+package com.hanre.fakeinsta.dto;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.Date;
+public class PostDTO {
 
-@Entity
-@Table(name = "posts")
-public class Posts {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "userId", nullable = false)
     private Long userId;
-
     private String imageUrl;
     private String caption;
 
     private Integer likeCount;
     private Integer commentCount;
-
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Date createdAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getUserId() {
         return userId;
@@ -72,13 +48,5 @@ public class Posts {
 
     public void setCommentCount(Integer commentCount) {
         this.commentCount = commentCount;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 }

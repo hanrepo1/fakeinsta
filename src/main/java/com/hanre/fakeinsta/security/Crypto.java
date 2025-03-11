@@ -51,18 +51,18 @@ public class Crypto {
 
     public static void main(String[] args) {
 
-        String strToEncrypt = "jdbc:postgresql://localhost:5433/hidden_nebula_hrd";//put text to encrypt in here
+        String strToEncrypt = "jdbc:mysql://localhost:3306/finsta";//put text to encrypt in here
         String encryptionResult = new Crypto().performEncrypt(strToEncrypt);
         System.out.println("Encryption Result : "+encryptionResult);
-        String strToEncrypt1 = "a";//put text to encrypt in here
+        String strToEncrypt1 = "hapo";//put text to encrypt in here
         String encryptionResult1 = new Crypto().performEncrypt(strToEncrypt1);
         System.out.println("Encryption Result : "+encryptionResult1);
-        String strToEncrypt2 = "b";//put text to encrypt in here
+        String strToEncrypt2 = "hapo";//put text to encrypt in here
         String encryptionResult2 = new Crypto().performEncrypt(strToEncrypt2);
         System.out.println("Encryption Result : "+encryptionResult2);
 
 
-        String strToDecrypt = "2fb5bce1271cd189168519ef87c09073";//put text to decrypt in here
+        String strToDecrypt = "2fb5bce1271cd1891519ef87c09073";//put text to decrypt in here
         String decriptionResult = new Crypto().performDecrypt(strToDecrypt);
         System.out.println("Decryption Result : "+decriptionResult);
     }

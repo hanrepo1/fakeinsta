@@ -16,19 +16,9 @@ public class TransformToDTO {
     private String sortBy = "";
     private String sort = "";
 
-    /**
-     Method untuk pagination
-     format pengembalian data paging ada disini
-     sesuaikan dengan kebutuhan di FE nanti
-     */
     public ResponseEntity<Object> transformObject(Map<String,Object> mapz, List ls, Page page
             , String filterBy, String value, List componentFiltering, HttpServletRequest request)//<PENAMBAHAN 21-12-2023>
     {
-        /**
-         *  Mengambil informasi sortby berdasarkan dari object page yang diproses sebelumnya
-         *  UNSORTED adalah default dari spring data JPA untuk menghandle value nya tidak di set dari program
-         *  jadi kita gunakan "id" untuk default sortBy dan "asc" untuk default sort
-         */
         sortBy = page.getSort().toString().split(":")[0];
         sortBy = sortBy.equals("UNSORTED")?"id":sortBy;
         sort   = sortBy.equals("UNSORTED")?"asc":page.getSort().toString().split(":")[1];
